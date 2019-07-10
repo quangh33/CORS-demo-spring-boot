@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CORS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        url: "http://localhost:81/hello"
+      }).then(function(data, status, jqxhr) {
+        $('.greeting-id').append(data);
+        console.log(jqxhr);
+      });
+    });
+
+    function callJsonp(){
+      var target = document.createElement('script');
+      target.src = "http://localhost:81/helloCallback?callback=myCallback";
+      document.body.appendChild(target);
+    }
+
+    function myCallback(data) {
+      $('.greeting-id-callback').append(data);
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <p class="greeting-id">Response: </p>
+    <p class="greeting-id-callback">Response from JSONP: </p>
+    <script>
+      window.onload=function(){
+        callJsonp();
+      }
+    </script>
+  </div>
+</body>
+</html>
