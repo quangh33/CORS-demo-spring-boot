@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
     @CrossOrigin(origins = "http://localhost:82")
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String greeting() {
         return "Hello, world";
     }
