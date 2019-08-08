@@ -15,7 +15,7 @@ public class GreetingController {
     @CrossOrigin(origins = "http://localhost:82")
     @GetMapping("/")
     public String greeting() {
-        return "Hello, world";
+        return "Hello, Quang";
     }
 
     @GetMapping("/helloCallback")
